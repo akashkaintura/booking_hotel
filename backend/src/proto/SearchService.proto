@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package search;
+
+service SearchService {
+  rpc FilterListings (FilterListingsRequest) returns (FilterListingsResponse);
+}
+
+message FilterListingsRequest {
+  string location = 1;
+  double minPrice = 2;
+  double maxPrice = 3;
+  int32 minRating = 4;
+}
+
+message FilterListingsResponse {
+  repeated Listing listings = 1;
+}
+
+message Listing {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+  double price = 4;
+  double rating = 5;
+}
